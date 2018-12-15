@@ -1,4 +1,4 @@
-# B-tree
+# BPlus tree
 CSCI331 Final Project on BPlus tree
 
 Implementation of B+ tree 
