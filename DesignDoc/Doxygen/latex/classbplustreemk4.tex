@@ -1,0 +1,232 @@
+\hypertarget{classbplustreemk4}{}\section{bplustreemk4 Class Reference}
+\label{classbplustreemk4}\index{bplustreemk4@{bplustreemk4}}
+
+
+{\ttfamily \#include $<$bplustreemk4.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbplustreemk4_a9cc051922ecb92f12f89563a63eba9c7}{bplustreemk4}} ()
+\item 
+\mbox{\hyperlink{classbplustreemk4_a1d4aac3f0517a54d9e838d7389203af5}{bplustreemk4}} (string directory)
+\item 
+void \mbox{\hyperlink{classbplustreemk4_abeaaa5003e7a3e2b0e99619ad718e14d}{process\+File}} ()
+\item 
+void \mbox{\hyperlink{classbplustreemk4_a6bca01d3bcc5461d899975b18c3d4c86}{clean\+Up}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbplustreemk4_a9cc051922ecb92f12f89563a63eba9c7}\label{classbplustreemk4_a9cc051922ecb92f12f89563a63eba9c7}} 
+\index{bplustreemk4@{bplustreemk4}!bplustreemk4@{bplustreemk4}}
+\index{bplustreemk4@{bplustreemk4}!bplustreemk4@{bplustreemk4}}
+\subsubsection{\texorpdfstring{bplustreemk4()}{bplustreemk4()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bplustreemk4\+::bplustreemk4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+107                            \{
+108 
+109 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classbplustreemk4_a1d4aac3f0517a54d9e838d7389203af5}\label{classbplustreemk4_a1d4aac3f0517a54d9e838d7389203af5}} 
+\index{bplustreemk4@{bplustreemk4}!bplustreemk4@{bplustreemk4}}
+\index{bplustreemk4@{bplustreemk4}!bplustreemk4@{bplustreemk4}}
+\subsubsection{\texorpdfstring{bplustreemk4()}{bplustreemk4()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bplustreemk4\+::bplustreemk4 (\begin{DoxyParamCaption}\item[{string}]{directory }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+9                                      \{
+10     \textcolor{comment}{//ofstream out;}
+11     fstream myfile;
+12     this->dir = dir;
+13     \textcolor{keywordtype}{string} header;
+14     \textcolor{keywordtype}{string} headerout;
+15     myfile.open(dir, ios::in);
+16     myfile >> this->headerSize;
+17     getline(myfile, header);
+18     cout << header << endl;
+19     this->header = header;
+20     \textcolor{keywordtype}{int} fieldcount = 0;
+21     \textcolor{keywordtype}{int} count = 0;
+22     \textcolor{comment}{//a "different" way to read data in because it wasnt working}
+23     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < this->headerSize - 2; i++) \{
+24         \textcolor{keywordflow}{if} (header.at(i) == \textcolor{charliteral}{'|'}) \{
+25             cout << \textcolor{stringliteral}{"encounter a field marker"} << endl;
+26             fieldcount++;
+27             \textcolor{keywordtype}{string} temp;
+28             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = i - count; x < i; x++) \{
+29                 temp.push\_back(header.at(x));
+30             \}
+31             \textcolor{keywordflow}{if} (fieldcount == 1) \{
+32                 this->insertFlag = stoi(temp);
+33             \}
+34             \textcolor{keywordflow}{if} (fieldcount == 2) \{
+35                 this->totalNumRecords = stoi(temp);
+36             \}
+37             \textcolor{keywordflow}{if} (fieldcount == 3) \{
+38                 this->sizeofRecords = stoi(temp)-1;
+39             \}
+40             \textcolor{keywordflow}{if} (fieldcount == 4) \{
+41                 this->fieldsPerRecord = stoi(temp);
+42             \}
+43             \textcolor{keywordflow}{if} (fieldcount == 5) \{
+44                 cout << \textcolor{stringliteral}{"temp aka what ever we have deemed a field "} << temp;
+45                 \textcolor{comment}{/*vector<string> temp2;}
+46 \textcolor{comment}{                for (int y = 0; y < temp.size(); y++) \{}
+47 \textcolor{comment}{}
+48 \textcolor{comment}{                \}*/}
+49                 vector<string> temp2;
+50                 \textcolor{keywordtype}{string} buffer;
+51                 stringstream ss(buffer);
+52                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < temp.size(); y++) \{
+53                     ss.clear();
+54                     ss << temp.at(y);
+55                     \textcolor{comment}{//cout << "Went into the string stream" << temp.at(y) << endl;}
+56                     ss >> buffer;
+57                     \textcolor{comment}{//cout << "THIS IS WHAT IS IN THE BUFFER  " << buffer << endl;}
+58                     \textcolor{keywordflow}{if} (buffer != \textcolor{stringliteral}{"\(\backslash\)""} || buffer != \textcolor{stringliteral}{"("} || buffer != \textcolor{stringliteral}{")"}) \{
+59                         temp2.push\_back(buffer);
+60                     \}
+61                 \}
+62                 this->sizePerfield = temp2;
+63             \}
+64             \textcolor{keywordflow}{if} (fieldcount == 6) \{
+65                 vector<char> temp3;
+66                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < temp.size(); y++) \{
+67                     \textcolor{keywordflow}{if} (temp.at(y) != \textcolor{charliteral}{'"'}|| temp.at(y)!=\textcolor{charliteral}{'('} || temp.at(y) != \textcolor{charliteral}{')'}) \{
+68                         temp3.push\_back(temp.at(y));
+69                     \}
+70 
+71                 \}
+72                 this->labelPerfield = temp3;
+73             \}
+74             \textcolor{keywordflow}{if} (fieldcount == 7) \{
+75                 this->sortField = stoi(temp);
+76             \}
+77             \textcolor{keywordflow}{if} (fieldcount == 8) \{
+78                 this->description = temp;
+79             \}
+80             count = 0;
+81             i++;
+82             
+83         \}
+84         count++;
+85     \}
+86     myfile.close();
+87     this->rbnRoot = this->header.size();
+88     \textcolor{comment}{//debugging}
+89     cout << this->headerSize << endl;
+90     cout << this->totalNumRecords << endl;
+91     cout << this->description << endl;
+92 
+93     \textcolor{comment}{/*for (int i = 0  ; i < this->sizePerfield.size(); i++) \{}
+94 \textcolor{comment}{        cout << this->sizePerfield.at(i);}
+95 \textcolor{comment}{        }
+96 \textcolor{comment}{    \}}
+97 \textcolor{comment}{    cout << endl;}
+98 \textcolor{comment}{    for (int i = 0; i < this->labelPerfield.size(); i++) \{}
+99 \textcolor{comment}{        cout << this->labelPerfield.at(i);}
+100 \textcolor{comment}{    \}*/}
+101     \textcolor{comment}{//out.open("btree.dat");}
+102     \textcolor{comment}{//out << header;}
+103     \textcolor{comment}{//out.close();}
+104     \mbox{\hyperlink{classbplustreemk4_a6bca01d3bcc5461d899975b18c3d4c86}{cleanUp}}();
+105     \mbox{\hyperlink{classbplustreemk4_abeaaa5003e7a3e2b0e99619ad718e14d}{processFile}}();
+106 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbplustreemk4_a6bca01d3bcc5461d899975b18c3d4c86}\label{classbplustreemk4_a6bca01d3bcc5461d899975b18c3d4c86}} 
+\index{bplustreemk4@{bplustreemk4}!clean\+Up@{clean\+Up}}
+\index{clean\+Up@{clean\+Up}!bplustreemk4@{bplustreemk4}}
+\subsubsection{\texorpdfstring{clean\+Up()}{cleanUp()}}
+{\footnotesize\ttfamily void bplustreemk4\+::clean\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+160                            \{
+161     vector<string> tempf;
+162     \textcolor{keywordtype}{string} temp;
+163     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this->sizePerfield.size(); i++) \{
+164         \textcolor{keywordflow}{if} (this->sizePerfield.at(i) != \textcolor{stringliteral}{"\(\backslash\)""} && this->sizePerfield.at(i) != \textcolor{stringliteral}{"("} && this->sizePerfield.at(i)
+       != \textcolor{stringliteral}{")"}) \{
+165             cout << this->sizePerfield.at(i);
+166             tempf.push\_back(this->sizePerfield.at(i));
+167         \}   
+168     \}
+169     this->sizePerfield = tempf;
+170     cout << endl;
+171     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this->labelPerfield.size(); i++) \{
+172         cout << this->labelPerfield.at(i);
+173     \}
+174 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classbplustreemk4_abeaaa5003e7a3e2b0e99619ad718e14d}\label{classbplustreemk4_abeaaa5003e7a3e2b0e99619ad718e14d}} 
+\index{bplustreemk4@{bplustreemk4}!process\+File@{process\+File}}
+\index{process\+File@{process\+File}!bplustreemk4@{bplustreemk4}}
+\subsubsection{\texorpdfstring{process\+File()}{processFile()}}
+{\footnotesize\ttfamily void bplustreemk4\+::process\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+110                                \{
+111     ofstream outfile;
+112     fstream myfile;
+113     myfile.open(this->dir);
+114     outfile.open(\textcolor{stringliteral}{"btree.dat"});
+115     outfile << this->header;
+116     \mbox{\hyperlink{structsequence_b}{sequenceB}} sb;
+117     \mbox{\hyperlink{structindex_b}{indexB}} ib;
+118     \textcolor{comment}{//pair temp;}
+119     \textcolor{keywordtype}{int} nextP=0;
+120     \textcolor{keywordtype}{int} preP=0;
+121     this->totalSequnceBlocks = 0;
+122     \textcolor{keywordtype}{string} tempLine;
+123     \textcolor{keywordflow}{while} (getline(myfile, tempLine)) \{
+124         \textcolor{keywordtype}{string} zip;
+125         \textcolor{keywordflow}{if} (tempLine.size() != this->sizeofRecords) \{
+126             cout << \textcolor{stringliteral}{"Line that was not big enough dected."} << endl;
+127             \textcolor{keywordflow}{continue};
+128         \}
+129         \textcolor{keywordflow}{else} \{
+130             cout << \textcolor{stringliteral}{"The line is of valid lenghth "} << endl;
+131             zip = tempLine.substr(0, 5);
+132             cout << \textcolor{stringliteral}{" The zip is "} << zip << endl;
+133             sb.\mbox{\hyperlink{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}{nextPointer}} = this->headerSize + (this->blockSize * this->totalSequnceBlocks);
+134             cout << \textcolor{stringliteral}{"Next pointer is "} << sb.\mbox{\hyperlink{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}{nextPointer}} << endl;
+135             cout << \textcolor{stringliteral}{"pushing back this : "} << tempLine << endl;
+136             sb.\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.push\_back(tempLine);
+137             cout << \textcolor{stringliteral}{" SEQUENCE SIZE BEFORE ADDING "} << sb.\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.size() << endl;
+138             ib.\mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}.push\_back(\mbox{\hyperlink{structkp}{kp}}(zip, (this->headerSize + this->totalSequnceBlocks * 249)));
+139             \textcolor{keywordflow}{if} (sb.\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.size() == 3) \{
+140                 this->totalSequnceBlocks++;
+141                 \textcolor{comment}{//cout << "this is what is in the sequence block " << sb.writeToFile() << endl;}
+142                 outfile << sb.\mbox{\hyperlink{structsequence_b_a4ac2a92234d1686dc5cbbaf9ebc1d304}{writeToFile}}();
+143                 sb.\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.clear();
+144                 \textcolor{keywordflow}{continue};
+145             \}
+146             \textcolor{keywordflow}{if} (ib.\mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}.size() == this->indexBlockSize-1 ) \{
+147                 this->totalIndexBlock++;
+148                 cout << \textcolor{stringliteral}{"this is what is in the Index block "} << ib.\mbox{\hyperlink{structindex_b_a66ee0af70d7b1a08658aee4cd7efb0cc}{writeToFile}}() << endl;
+149                 outfile << ib.\mbox{\hyperlink{structindex_b_a66ee0af70d7b1a08658aee4cd7efb0cc}{writeToFile}}();
+150                 ib.\mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}.clear();
+151                 \textcolor{keywordflow}{continue};
+152             \}
+153             \textcolor{comment}{//cout << "The sequence size after adding " << sb.seqeunce.size() << endl;}
+154         \}
+155     \}
+156     outfile.close();
+157     myfile.close();
+158     cout << this->sizeofRecords << endl;
+159 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bplustreemk4_8h}{bplustreemk4.\+h}}\item 
+\mbox{\hyperlink{bplustreemk4_8cpp}{bplustreemk4.\+cpp}}\end{DoxyCompactItemize}

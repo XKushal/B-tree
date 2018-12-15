@@ -1,0 +1,130 @@
+\hypertarget{structsequence_b}{}\section{sequenceB Struct Reference}
+\label{structsequence_b}\index{sequenceB@{sequenceB}}
+
+
+{\ttfamily \#include $<$bplustreemk4.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsequence_b_a084309320b75d838a689e2e847057bc7}{sequenceB}} ()
+\item 
+\mbox{\hyperlink{structsequence_b_afbfeeebc82d4d3ad4807bae870a8e13a}{sequenceB}} (int prev, string item)
+\item 
+void \mbox{\hyperlink{structsequence_b_aaf3c661c2c5c00029eb796b2a0a7ca6c}{set\+Next}} (int next)
+\item 
+string \mbox{\hyperlink{structsequence_b_a4ac2a92234d1686dc5cbbaf9ebc1d304}{write\+To\+File}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}{next\+Pointer}}
+\item 
+int \mbox{\hyperlink{structsequence_b_a283d04c17687640e735e6fc5dc444f50}{prev\+Pointer}}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structsequence_b_a084309320b75d838a689e2e847057bc7}\label{structsequence_b_a084309320b75d838a689e2e847057bc7}} 
+\index{sequenceB@{sequenceB}!sequenceB@{sequenceB}}
+\index{sequenceB@{sequenceB}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{sequence\+B()}{sequenceB()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily sequence\+B\+::sequenceB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+27                 \{
+28 
+29     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{structsequence_b_afbfeeebc82d4d3ad4807bae870a8e13a}\label{structsequence_b_afbfeeebc82d4d3ad4807bae870a8e13a}} 
+\index{sequenceB@{sequenceB}!sequenceB@{sequenceB}}
+\index{sequenceB@{sequenceB}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{sequence\+B()}{sequenceB()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily sequence\+B\+::sequenceB (\begin{DoxyParamCaption}\item[{int}]{prev,  }\item[{string}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+30                                     \{
+31         this->\mbox{\hyperlink{structsequence_b_a283d04c17687640e735e6fc5dc444f50}{prevPointer}} = prev;
+32         this->\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.push\_back(item);
+33     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structsequence_b_aaf3c661c2c5c00029eb796b2a0a7ca6c}\label{structsequence_b_aaf3c661c2c5c00029eb796b2a0a7ca6c}} 
+\index{sequenceB@{sequenceB}!set\+Next@{set\+Next}}
+\index{set\+Next@{set\+Next}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{set\+Next()}{setNext()}}
+{\footnotesize\ttfamily void sequence\+B\+::set\+Next (\begin{DoxyParamCaption}\item[{int}]{next }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+34                           \{
+35         this->\mbox{\hyperlink{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}{nextPointer}} = next;
+36     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{structsequence_b_a4ac2a92234d1686dc5cbbaf9ebc1d304}\label{structsequence_b_a4ac2a92234d1686dc5cbbaf9ebc1d304}} 
+\index{sequenceB@{sequenceB}!write\+To\+File@{write\+To\+File}}
+\index{write\+To\+File@{write\+To\+File}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{write\+To\+File()}{writeToFile()}}
+{\footnotesize\ttfamily string sequence\+B\+::write\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+37                          \{
+38         \textcolor{keywordtype}{string} temp;
+39         stringstream ss(temp);
+40         temp.push\_back(\textcolor{charliteral}{'s'});
+41         \textcolor{comment}{//temp.push\_back('|');}
+42         \textcolor{comment}{//temp.push\_back(prevPointer);}
+43         temp.push\_back(\textcolor{charliteral}{'|'});
+44         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.size(); i++) \{
+45             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < \mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.at(i).size(); x++) \{
+46                 temp.push\_back(\mbox{\hyperlink{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}{seqeunce}}.at(i).at(x));
+47             \}
+48             \textcolor{comment}{//ss << seqeunce.at(i);}
+49             \textcolor{comment}{//cout << "What is going into the sequence " << seqeunce.at(i) << endl;}
+50             \textcolor{comment}{//ss >> temp;}
+51         \}
+52         \textcolor{comment}{//cout << "THE LAST ITEM IN THE SEQEUENCE " << seqeunce.at(2)<<endl;}
+53         \textcolor{comment}{//cout << "THE SIZE OF THE SEQUENCE BLOCK " << seqeunce.size() << endl;}
+54         temp.push\_back(\textcolor{charliteral}{'|'});
+55         temp.push\_back(\mbox{\hyperlink{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}{nextPointer}});
+56         temp.push\_back(\textcolor{charliteral}{'|'});
+57         \textcolor{comment}{//cout << "WHAT IS BEING RETURNED TO BE PRINTED " << temp << endl;}
+58         \textcolor{comment}{//for (int i = 0; i < seqeunce.size(); i++) \{}
+59         \textcolor{comment}{//  cout << "IN THE SEQUENCE " << seqeunce.at(i) << endl;}
+60         \textcolor{comment}{//\}}
+61         \textcolor{keywordflow}{return} temp;
+62     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}\label{structsequence_b_a7fc2afa4a31d852ecaae7d0b6733ad7e}} 
+\index{sequenceB@{sequenceB}!next\+Pointer@{next\+Pointer}}
+\index{next\+Pointer@{next\+Pointer}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{next\+Pointer}{nextPointer}}
+{\footnotesize\ttfamily int sequence\+B\+::next\+Pointer}
+
+\mbox{\Hypertarget{structsequence_b_a283d04c17687640e735e6fc5dc444f50}\label{structsequence_b_a283d04c17687640e735e6fc5dc444f50}} 
+\index{sequenceB@{sequenceB}!prev\+Pointer@{prev\+Pointer}}
+\index{prev\+Pointer@{prev\+Pointer}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{prev\+Pointer}{prevPointer}}
+{\footnotesize\ttfamily int sequence\+B\+::prev\+Pointer}
+
+\mbox{\Hypertarget{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}\label{structsequence_b_a4cb5526b3901d3a3348447bee4e7f623}} 
+\index{sequenceB@{sequenceB}!seqeunce@{seqeunce}}
+\index{seqeunce@{seqeunce}!sequenceB@{sequenceB}}
+\subsubsection{\texorpdfstring{seqeunce}{seqeunce}}
+{\footnotesize\ttfamily vector$<$string$>$ sequence\+B\+::seqeunce}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bplustreemk4_8h}{bplustreemk4.\+h}}\end{DoxyCompactItemize}

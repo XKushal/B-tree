@@ -1,0 +1,115 @@
+\hypertarget{structindex_b}{}\section{indexB Struct Reference}
+\label{structindex_b}\index{indexB@{indexB}}
+
+
+{\ttfamily \#include $<$bplustreemk4.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structindex_b_acdb14c91565f0ff89aa74a6bc2734ca7}{indexB}} ()
+\item 
+\mbox{\hyperlink{structindex_b_a60b0f681a98c7a2aabdb9f0b3f5fd32c}{indexB}} (int prev, \mbox{\hyperlink{structkp}{kp}} item)
+\item 
+void \mbox{\hyperlink{structindex_b_aa49ce231339be0a86b0f56f217a90772}{set\+Next}} (int next)
+\item 
+string \mbox{\hyperlink{structindex_b_a66ee0af70d7b1a08658aee4cd7efb0cc}{write\+To\+File}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structindex_b_a40845f21f1bf3ba1c5c64b1065283d97}{next\+Pointer}}
+\item 
+int \mbox{\hyperlink{structindex_b_a6281f24532b9dedfefe7e2a4ce86800c}{prev\+Pointer}}
+\item 
+vector$<$ \mbox{\hyperlink{structkp}{kp}} $>$ \mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structindex_b_acdb14c91565f0ff89aa74a6bc2734ca7}\label{structindex_b_acdb14c91565f0ff89aa74a6bc2734ca7}} 
+\index{indexB@{indexB}!indexB@{indexB}}
+\index{indexB@{indexB}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{index\+B()}{indexB()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily index\+B\+::indexB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+70              \{
+71 
+72     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{structindex_b_a60b0f681a98c7a2aabdb9f0b3f5fd32c}\label{structindex_b_a60b0f681a98c7a2aabdb9f0b3f5fd32c}} 
+\index{indexB@{indexB}!indexB@{indexB}}
+\index{indexB@{indexB}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{index\+B()}{indexB()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily index\+B\+::indexB (\begin{DoxyParamCaption}\item[{int}]{prev,  }\item[{\mbox{\hyperlink{structkp}{kp}}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+73                               \{
+74         this->\mbox{\hyperlink{structindex_b_a6281f24532b9dedfefe7e2a4ce86800c}{prevPointer}} = prev;
+75         this->\mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}.push\_back(item);
+76     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structindex_b_aa49ce231339be0a86b0f56f217a90772}\label{structindex_b_aa49ce231339be0a86b0f56f217a90772}} 
+\index{indexB@{indexB}!set\+Next@{set\+Next}}
+\index{set\+Next@{set\+Next}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{set\+Next()}{setNext()}}
+{\footnotesize\ttfamily void index\+B\+::set\+Next (\begin{DoxyParamCaption}\item[{int}]{next }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+77                            \{
+78         this->\mbox{\hyperlink{structindex_b_a40845f21f1bf3ba1c5c64b1065283d97}{nextPointer}} = next;
+79     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{structindex_b_a66ee0af70d7b1a08658aee4cd7efb0cc}\label{structindex_b_a66ee0af70d7b1a08658aee4cd7efb0cc}} 
+\index{indexB@{indexB}!write\+To\+File@{write\+To\+File}}
+\index{write\+To\+File@{write\+To\+File}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{write\+To\+File()}{writeToFile()}}
+{\footnotesize\ttfamily string index\+B\+::write\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}
+80                          \{
+81         \textcolor{keywordtype}{string} temp;
+82         stringstream ss(temp);
+83         temp.push\_back(\textcolor{charliteral}{'i'});
+84         temp.push\_back(\textcolor{charliteral}{'|'});
+85         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}{seqeunce}}.size(); i++) \{
+86             ss >> temp;
+87         \}
+88         temp.push\_back(\textcolor{charliteral}{'|'});
+89         \textcolor{keywordflow}{return} temp;
+90     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structindex_b_a40845f21f1bf3ba1c5c64b1065283d97}\label{structindex_b_a40845f21f1bf3ba1c5c64b1065283d97}} 
+\index{indexB@{indexB}!next\+Pointer@{next\+Pointer}}
+\index{next\+Pointer@{next\+Pointer}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{next\+Pointer}{nextPointer}}
+{\footnotesize\ttfamily int index\+B\+::next\+Pointer}
+
+\mbox{\Hypertarget{structindex_b_a6281f24532b9dedfefe7e2a4ce86800c}\label{structindex_b_a6281f24532b9dedfefe7e2a4ce86800c}} 
+\index{indexB@{indexB}!prev\+Pointer@{prev\+Pointer}}
+\index{prev\+Pointer@{prev\+Pointer}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{prev\+Pointer}{prevPointer}}
+{\footnotesize\ttfamily int index\+B\+::prev\+Pointer}
+
+\mbox{\Hypertarget{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}\label{structindex_b_a2d8b28953bea6e6bdc221993ef60864a}} 
+\index{indexB@{indexB}!seqeunce@{seqeunce}}
+\index{seqeunce@{seqeunce}!indexB@{indexB}}
+\subsubsection{\texorpdfstring{seqeunce}{seqeunce}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{structkp}{kp}}$>$ index\+B\+::seqeunce}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bplustreemk4_8h}{bplustreemk4.\+h}}\end{DoxyCompactItemize}
